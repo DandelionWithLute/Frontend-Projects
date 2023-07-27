@@ -1,5 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
+import styles from "./navbar.module.css";
+import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
+// import { signout, useSession } from "next-auth/";
 
 const links = [
   {
@@ -35,15 +40,26 @@ const links = [
 ];
 
 function Navbar() {
+  // const session = useSession()
+
   return (
-    <div>
-      <Link href="/">Navbar</Link>
-      <div>
+    <div className={styles.container}>
+      <Link href="/" className={styles.logo}>
+        Lamamia
+      </Link>
+      <div className={styles.links}>
+        <DarkModeToggle />
         {links.map((link) => (
-          <Link key={link.id} href={link.url}>
+          <Link key={link.id} href={link.url} className={styles.link}>
             {link.title}
           </Link>
         ))}
+        <button className={styles.logout}>Logout</button>
+        {/* {session.status === "authenticated" && (
+          <button className={styles.logout} onClick={signOut}>
+            Logout
+          </button>
+        )} */}
       </div>
     </div>
   );
