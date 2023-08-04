@@ -32,3 +32,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+
+import React from "react";
+import styles from "./page.module.css";
+
+async function getData() {
+  const res = await fetch("https");
+  if (!res.ok) {
+    throw new Error("Failed to fetch data.");
+  }
+  return res.json();
+}
+
+const Blog = () => {
+  const data = getData();
+  return (
+    <div className={styles.mainContainer}>
+      {data.map((item) => (
+        <div className={item.id}></div>
+      ))}
+    </div>
+  );
+};
+
+export default Blog;
